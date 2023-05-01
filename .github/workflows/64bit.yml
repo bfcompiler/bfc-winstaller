@@ -33,7 +33,7 @@ jobs:
       - name: Install Yarn
         run: corepack enable && corepack prepare yarn@stable --activate
       - name: Install Rust
-        run: rustup install 1.69.0
+        run: rustup install nightly
       - name: Install dependencies with Yarn
         run: yarn
       - name: Compile Tauri
