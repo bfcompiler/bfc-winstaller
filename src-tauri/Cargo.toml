@@ -1,10 +1,10 @@
 [package]
 name = "bfc-winstaller"
-version = "0.0.0"
-description = "A Tauri App"
-authors = ["you"]
-license = ""
-repository = ""
+version = "0.0.1"
+description = "The Windows installer for the Brainf**k compiler written by Jacob Allen Morris"
+authors = ["Jacob Allen Morris"]
+license = "MIT"
+repository = "https://github.com/bfcompiler/bfc-winstaller"
 edition = "2021"
 
 [build-dependencies]

@@ -1,7 +1,14 @@
-# Tauri + React
+﻿# Brainf**k Compiler W-installer
+### Version # 0.0.1
 
-This template should help get you started developing with Tauri and React in Vite.
+---
 
-## Recommended IDE Setup
+This is the Windows Installer for the Brainf**k Compiler project written by Jacob Allen Morris.
+Currently as of **Version # 0.0.1 / 2023-05-01**, it uses a [*placeholder project*](https://github.com/bfcompiler/bfc-win-placeholder) available on the [bfcompiler github organization](https://github.com/bfcompiler/).
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+---
+
+### How to build is available at/in [BUILDING.md](https://github.com/bfcompiler/bfc-winstaller/blob/master/BUILDING.md)
+
+### Changelog available at/in [CHANGELOG.md](https://github.com/bfcompiler/bfc-winstaller/blob/master/CHANGELOG.md)
+### Licensed under [MIT license](https://github.com/bfcompiler/bfc-winstaller/blob/master/LICENSE) by Jacob Allen Morris in 2023
