@@ -1,4 +1,4 @@
-# Building Brainf**k Compiler W-installer
+# Building Brainf\*\*k Compiler W-installer
 ### Version # 0.0.1
 
 ---
