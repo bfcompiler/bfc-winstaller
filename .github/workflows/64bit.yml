@@ -31,7 +31,7 @@ jobs:
             node_modules/
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
       - name: Install Yarn
-        run: corepack enable && corepack prepare yarn@stable --activate
+        run: corepack enable && corepack prepare yarn@3.5.1 --activate
       - name: Install Rust
         run: rustup install nightly && rustup default nightly
       - name: Install dependencies with Yarn
