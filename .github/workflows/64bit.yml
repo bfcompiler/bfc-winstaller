@@ -35,7 +35,7 @@ jobs:
       - name: Install Rust
         run: rustup install nightly && rustup default nightly
       - name: Install dependencies with Yarn
-        run: yarn
+        run: yarn install
       - name: Compile Tauri
         uses: tauri-apps/tauri-action@v0
       - name: Upload artifact
