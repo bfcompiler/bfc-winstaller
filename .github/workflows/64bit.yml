@@ -1,0 +1,38 @@
+name: '64bit Brainf**k winstaller'
+on: [workflow_dispatch]
+
+jobs:
+  build_tauri_64bit:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 19
+      - name: Cache 64bit Windows cargo
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-64bit-${{ hashFiles('**/src-tauri/Cargo.lock') }}
+      - name: Cache Yarn
+        uses: actions/cache@v3
+        with:
+          path: |
+            ./.yarn/
+            ./node_modules/
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Yarn
+        run: corepack enable && corepack prepare yarn@stable --activate
+      - name: Install Rust
+        run: rustup install 1.69.0
+      - name: Install dependencies with Yarn
+        run: yarn
+      - name: Compile Tauri
+        uses: tauri-apps/tauri-action@v0
