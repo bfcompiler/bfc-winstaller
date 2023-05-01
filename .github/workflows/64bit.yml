@@ -7,6 +7,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+        with:
+          submodules: true
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
@@ -19,14 +21,14 @@ jobs:
             ~/.cargo/registry/index/
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
-            target/
+            src-tauri/target/
           key: ${{ runner.os }}-cargo-64bit-${{ hashFiles('**/src-tauri/Cargo.lock') }}
       - name: Cache Yarn
         uses: actions/cache@v3
         with:
           path: |
-            ./.yarn/
-            ./node_modules/
+            .yarn/
+            node_modules/
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
       - name: Install Yarn
         run: corepack enable && corepack prepare yarn@stable --activate
@@ -36,3 +38,8 @@ jobs:
         run: yarn
       - name: Compile Tauri
         uses: tauri-apps/tauri-action@v0
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: bfc-winstaller
+          path: src-tauri/target/release/bfc-winstaller.exe
