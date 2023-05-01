@@ -12,7 +12,7 @@ const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 
 import { HIGHLIGHT_COLOR, BACKGROUND_COLOR } from '../ColorScheme';
-import BFHeader from '../Components/BFHeader';
+import BFHeader from '../components/BFHeader';
 
 function HoverText(props) {
 	const [hovered, setHovered] = React.useState(false);

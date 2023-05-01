@@ -16,7 +16,7 @@ import { HIGHLIGHT_COLOR, BACKGROUND_COLOR } from '../ColorScheme';
 import tf from '../Tauri';
 import CONSTANTS from '../Constants';
 import { flushCommand } from '../slices/BashCommand';
-import BFHeader from '../Components/BFHeader';
+import BFHeader from '../components/BFHeader';
 
 export default function MSYS2DownloaderPage() {
 	const nav = useNavigate();

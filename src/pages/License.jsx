@@ -10,7 +10,7 @@ import color from 'onecolor';
 
 const { Content } = Layout;
 const { Paragraph } = Typography;
-import BFHeader from '../Components/BFHeader';
+import BFHeader from '../components/BFHeader';
 
 import { HIGHLIGHT_COLOR, BACKGROUND_COLOR } from '../ColorScheme';
 

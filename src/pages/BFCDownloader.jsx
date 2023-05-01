@@ -15,7 +15,7 @@ const { Title, Paragraph } = Typography;
 import tf from '../Tauri';
 import { BACKGROUND_COLOR } from '../ColorScheme';
 import CONSTANTS from '../Constants';
-import BFHeader from '../Components/BFHeader';
+import BFHeader from '../components/BFHeader';
 
 export default function BFCDownloader() {
 	const nav = useNavigate();
