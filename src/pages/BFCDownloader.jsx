@@ -9,12 +9,13 @@ import { useSelector } from 'react-redux';
 import { Layout, Space, Typography, Button, Progress } from 'antd';
 import color from 'onecolor';
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 
 import tf from '../Tauri';
-import { HIGHLIGHT_COLOR, BACKGROUND_COLOR } from '../ColorScheme';
+import { BACKGROUND_COLOR } from '../ColorScheme';
 import CONSTANTS from '../Constants';
+import BFHeader from '../Components/BFHeader';
 
 export default function BFCDownloader() {
 	const nav = useNavigate();
@@ -99,23 +100,8 @@ export default function BFCDownloader() {
 
 	return <div onContextMenu={e => e.preventDefault()}>
 		<Space direction='vertical' style={{ width: "100%", position: "absolute", top: "0px", left: "0px", overflow: "hidden" }} size={"small"}>
-			<Layout >
-				<Header style={{
-					textAlign: 'center',
-					color: '#fff',
-					paddingInline: 50,
-					lineHeight: '64px',
-					backgroundColor: HIGHLIGHT_COLOR,
-					height: "100px"
-				}}>
-					<Title style={{
-						color: "#fff",
-						textAlign: "left",
-						cursor: "default",
-						WebkitUserSelect: "none",
-						transform: "translate(-40px, -5px)"
-					}} copyable={false}>Brainf**k Winstaller</Title>
-				</Header>
+			<Layout>
+				<BFHeader />
 				<Content style={{
 					textAlign: 'center',
 					minHeight: 120,

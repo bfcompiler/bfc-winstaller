@@ -9,13 +9,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import color from 'onecolor';
 import { useNavigate } from 'react-router-dom';
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 
 import { HIGHLIGHT_COLOR, BACKGROUND_COLOR } from '../ColorScheme';
 import tf from '../Tauri';
 import CONSTANTS from '../Constants';
 import { flushCommand } from '../slices/BashCommand';
+import BFHeader from '../Components/BFHeader';
 
 export default function MSYS2DownloaderPage() {
 	const nav = useNavigate();
@@ -117,22 +118,7 @@ export default function MSYS2DownloaderPage() {
 	return <div onContextMenu={e => e.preventDefault()}>
 		<Space direction='vertical' style={{ width: "100%", position: "absolute", top: "0px", left: "0px" }} size={"small"}>
 			<Layout >
-				<Header style={{
-					textAlign: 'center',
-					color: '#fff',
-					paddingInline: 50,
-					lineHeight: '64px',
-					backgroundColor: HIGHLIGHT_COLOR,
-					height: "100px"
-				}}>
-					<Title style={{
-						color: "#fff",
-						textAlign: "left",
-						cursor: "default",
-						WebkitUserSelect: "none",
-						transform: "translate(-40px, -5px)"
-					}} copyable={false}>Brainf**k Winstaller</Title>
-				</Header>
+				<BFHeader />
 				<Content style={{
 					textAlign: 'center',
 					minHeight: 120,
