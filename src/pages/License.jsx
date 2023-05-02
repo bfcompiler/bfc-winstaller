@@ -102,13 +102,14 @@ SOFTWARE.`.split("\n");
 					backgroundColor: HIGHLIGHT_COLOR
 				}
 			}} cancelText="No" onOk={() => {
-				if (isRerun == null) {
-					nav("/");
-				} else if (!isRerun) {
-					nav("/warning");
-				} else {
-					nav("/rerun");
-				}
+				// if (isRerun == null) {
+				// 	nav("/");
+				// } else if (!isRerun) {
+				// 	nav("/warning");
+				// } else {
+				// 	nav("/rerun");
+				// }
+				nav("/warning");
 			}} onCancel={() => setIsModalOpen(false)}>
 				Are you sure you accept the MIT License?
 			</Modal>
