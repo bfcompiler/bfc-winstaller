@@ -17,6 +17,7 @@ pub async fn unzip_file<R: Runtime>(
 	let raw_zip = File::open(&input).unwrap();
 	let mut zip_file = ZipArchive::new(raw_zip).unwrap();
 	zip_file.extract(&output).unwrap();
+	drop(zip_file);
 	window.emit_all("unzip_file", &input).unwrap();
     Ok(())
 }

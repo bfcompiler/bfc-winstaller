@@ -13,7 +13,7 @@ const { Content } = Layout;
 const { Title, Paragraph } = Typography;
 
 import tf from '../Tauri';
-import { BACKGROUND_COLOR } from '../ColorScheme';
+import { HIGHLIGHT_COLOR, BACKGROUND_COLOR } from '../ColorScheme';
 import CONSTANTS from '../Constants';
 import BFHeader from '../components/BFHeader';
 

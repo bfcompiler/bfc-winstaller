@@ -1,16 +1,16 @@
 ﻿# Brainf\*\*k Compiler W-installer
-### Version # 0.0.1
+### Version # 0.1.0
 
 ---
 
 This is the Windows Installer for the Brainf\*\*k Compiler project written by Jacob Allen Morris.
-Currently as of **Version # 0.0.1 / 2023-05-01**, it uses a [*placeholder project*](https://github.com/bfcompiler/bfc-win-placeholder) available on the [bfcompiler github organization](https://github.com/bfcompiler/).
+Currently as of **Version # 0.1.0 / 2023-05-02**
 
 Website for how to install and setup is available at [https://bfcompiler.github.io/bfc-winstaller/](https://bfcompiler.github.io/bfc-winstaller/)
 
 ---
 
-### How to build is available at/in [BUILDING.md](https://github.com/bfcompiler/bfc-winstaller/blob/master/BUILDING.md)
+### How to build is available at/in [BUILDING.md](internals/BUILDING)
 
-### Changelog available at/in [CHANGELOG.md](https://github.com/bfcompiler/bfc-winstaller/blob/master/CHANGELOG.md)
-### Licensed under [MIT license](https://github.com/bfcompiler/bfc-winstaller/blob/master/LICENSE) by Jacob Allen Morris in 2023
+### Changelog available at/in [CHANGELOG.md](internals/CHANGELOG)
+### Licensed under [MIT license](internals/LICENSE) by Jacob Allen Morris in 2023
