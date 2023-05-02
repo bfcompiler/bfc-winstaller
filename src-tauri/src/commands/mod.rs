@@ -16,6 +16,7 @@ mod setup_msys2;
 mod unzip_file;
 mod setup_bfc;
 mod exit_process;
+mod detect_rerun;
 
 use delete_file::delete_file;
 use download_to_from_url::download_to_from_url;
@@ -28,6 +29,7 @@ use setup_msys2::setup_msys2;
 use unzip_file::unzip_file;
 use setup_bfc::setup_bfc;
 use exit_process::exit_process;
+use detect_rerun::detect_rerun;
 
 pub fn get_handler() -> impl Fn(Invoke<Wry>) {
     move |invoke| {
@@ -49,6 +51,7 @@ pub fn get_handler() -> impl Fn(Invoke<Wry>) {
             "unzip_file" => unzip_file::__cmd__unzip_file!(unzip_file, invoke),
             "setup_bfc" => setup_bfc::__cmd__setup_bfc!(setup_bfc, invoke),
             "exit_process" => exit_process::__cmd__exit_process!(exit_process, invoke),
+            "detect_rerun" => detect_rerun::__cmd__detect_rerun!(detect_rerun, invoke),
             _ => (),
         };
     }

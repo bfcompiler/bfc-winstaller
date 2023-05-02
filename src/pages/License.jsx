@@ -6,11 +6,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Layout, Space, Typography, Button, Modal } from 'antd';
+import { useSelector } from 'react-redux';
 import color from 'onecolor';
 
 const { Content } = Layout;
 const { Paragraph } = Typography;
 import BFHeader from '../components/BFHeader';
+import tf from '../Tauri';
 
 import { HIGHLIGHT_COLOR, BACKGROUND_COLOR } from '../ColorScheme';
 
@@ -28,6 +30,12 @@ function HoverText(props) {
 export default function LicensePage() {
 	const nav = useNavigate();
 	const [isModalOpen, setIsModalOpen] = React.useState(false);
+	const isRerun = useSelector(state => state.detectRerun.rerun);
+
+	React.useEffect(() => {
+		tf.detect_rerun();
+	}, []);
+
 
 	let LICENSE_ARRAY = `MIT License
 
@@ -93,7 +101,15 @@ SOFTWARE.`.split("\n");
 				style: {
 					backgroundColor: HIGHLIGHT_COLOR
 				}
-			}} cancelText="No" onOk={() => nav("/warning")} onCancel={() => setIsModalOpen(false)}>
+			}} cancelText="No" onOk={() => {
+				if (isRerun == null) {
+					nav("/");
+				} else if (!isRerun) {
+					nav("/warning");
+				} else {
+					nav("/rerun");
+				}
+			}} onCancel={() => setIsModalOpen(false)}>
 				Are you sure you accept the MIT License?
 			</Modal>
 		</Space>

@@ -14,6 +14,7 @@ import BashCommandReducer from './slices/BashCommand';
 import SetupMsys2Reducer from './slices/SetupMsys2';
 import UnzipFileReducer from './slices/UnzipFile';
 import SetupBfcReducer from './slices/SetupBfc';
+import DetectRerunReducer from './slices/DetectRerun';
 
 export default configureStore({
 	reducer: {
@@ -25,6 +26,7 @@ export default configureStore({
 		bashCommand: BashCommandReducer,
 		setupMsys2: SetupMsys2Reducer,
 		unzipFile: UnzipFileReducer,
-		setupBfc: SetupBfcReducer
+		setupBfc: SetupBfcReducer,
+		detectRerun: DetectRerunReducer
 	}
 });

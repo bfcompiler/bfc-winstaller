@@ -15,6 +15,7 @@ const MSYS2DownloaderPage = lazy(() => import("./pages/MSYS2Downloader"));
 const WarningPage = lazy(() => import("./pages/Warning"));
 const BFCDownloaderPage = lazy(() => import("./pages/BFCDownloader"));
 const CompletePage = lazy(() => import("./pages/Complete"));
+const RerunPage = lazy(() => import("./pages/Rerun"));
 
 const route = createBrowserRouter([
 	{
@@ -36,6 +37,10 @@ const route = createBrowserRouter([
 	{
 		path: "/complete",
 		element: <Suspense fallback={FallbackPage}><CompletePage /></Suspense>
+	},
+	{
+		path: "/rerun",
+		element: <Suspense fallback={FallbackPage}><RerunPage /></Suspense>
 	}
 ]);
 

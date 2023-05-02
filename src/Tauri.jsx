@@ -15,6 +15,7 @@ import { setCommandOutput } from './slices/BashCommand';
 import { setMsys2Setup } from './slices/SetupMsys2';
 import { setUnzipped } from './slices/UnzipFile';
 import { setBfcSetup } from './slices/SetupBfc';
+import { setIsRerun } from './slices/DetectRerun';
 
 export function open_link_in_default_browser(url) {
 	tauri.invoke("open_url", { url });
@@ -45,6 +46,7 @@ export function download_to_from_url(url, path) {
 			file: event.payload,
 			complete: true
 		}));
+		unlisten();
 	}).then(e => unlisten = e);
 	tauri.invoke("download_to_from_url", { url, path });
 }
@@ -56,6 +58,7 @@ export function extract_tar_xz(input, output) {
 			file: event.payload,
 			complete: true
 		}));
+		unlisten();
 	}).then(e => unlisten = e);
 	tauri.invoke("extract_tar_xz", { xzPath: input, outputPath: output });
 }
@@ -67,11 +70,13 @@ export function delete_path(path) {
 			file: event.payload,
 			complete: true
 		}));
+		unlisten();
 	}).then(e => unlisten = e);
 	tauri.invoke("delete_file", { path });
 }
 
 export function run_bash_command(path, command) {
+	let unlisten;
 	event.listen("run_bash_command", event => {
 		store.dispatch(setCommandOutput({
 			command: event.payload.command,
@@ -79,32 +84,49 @@ export function run_bash_command(path, command) {
 			output: event.payload.output,
 			completed: true
 		}));
-	});
+		unlisten();
+	}).then(e => unlisten = e);
 	tauri.invoke("run_bash_command", { path, command });
 }
 
 export function setup_msys2(path) {
+	let unlisten;
 	event.listen("setup_msys2", event => {
 		store.dispatch(setMsys2Setup(true));
-	});
+		unlisten();
+	}).then(e => unlisten = e);
 	tauri.invoke("setup_msys2", { path });
 }
 
 export function unzip_file(input, output) {
+	let unlisten;
 	event.listen("unzip_file", event => {
 		store.dispatch(setUnzipped({
 			completed: true,
 			file: event.payload
 		}));
-	});
+		unlisten();
+	}).then(e => unlisten = e);
 	tauri.invoke("unzip_file", { input, output });
 }
 
 export function setup_bfc(path) {
+	let unlisten;
 	event.listen("setup_bfc", event => {
 		store.dispatch(setBfcSetup());
-	});
+		unlisten();
+	}).then(e => unlisten = e);
 	tauri.invoke("setup_bfc", { path });
+}
+
+export function detect_rerun() {
+	let unlisten;
+	event.listen("detect_rerun", event => {
+		console.log(event);
+		store.dispatch(setIsRerun(event.payload));
+		unlisten();
+	}).then(e => unlisten = e);
+	tauri.invoke("detect_rerun");
 }
 
 export function exit_process() {
@@ -122,5 +144,6 @@ export default {
 	setup_msys2,
 	unzip_file,
 	setup_bfc,
+	detect_rerun,
 	exit_process
 };

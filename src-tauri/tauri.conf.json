@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "bfc-winstaller",
-    "version": "0.0.0"
+    "version": "0.1.1"
   },
   "tauri": {
     "allowlist": {
@@ -19,7 +19,7 @@
       }
     },
     "bundle": {
-      "active": true,
+      "active": false,
       "icon": [
         "../assets/icons/32x32.png",
         "../assets/icons/64x64.png",
