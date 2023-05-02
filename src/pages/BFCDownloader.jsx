@@ -14,6 +14,8 @@ const { Title, Paragraph } = Typography;
 
 import tf from '../Tauri';
 import { HIGHLIGHT_COLOR, BACKGROUND_COLOR } from '../ColorScheme';
+import GITHUB_ICON_BLACK from '../../assets/images/github-icon.png';
+import GITHUB_ICON_WHITE from '../../assets/images/github-icon-white.png';
 import CONSTANTS from '../Constants';
 import BFHeader from '../components/BFHeader';
 
@@ -22,6 +24,7 @@ export default function BFCDownloader() {
 	const adpath = useSelector(state => state.appdata.path);
 	const [step, setStep] = React.useState(0);
 	const [stepMessage, setStepMessage] = React.useState("Querying bfc-win Releases");
+	const [hoveringGithub, setHoveringGithub] = React.useState(false);
 
 	React.useEffect(() => {
 		switch (step) {
@@ -112,7 +115,13 @@ export default function BFCDownloader() {
 				}}>
 					<Title style={{
 						WebkitUserSelect: "none"
-					}}>Downloading bfc-win</Title>
+					}}>Downloading bfc-win<img style={{
+						display: "inline",
+						width: "48px",
+						height: "auto",
+						transform: "translate(5px, 12px)",
+						cursor: "pointer"
+					}} src={hoveringGithub ? GITHUB_ICON_WHITE : GITHUB_ICON_BLACK} onMouseEnter={() => setHoveringGithub(true)} onMouseLeave={() => setHoveringGithub(false)} onClick={() => tf.open_link_in_default_browser("https://github.com/bfcompiler/bfc")}/></Title>
 					<Paragraph style={{
 						WebkitUserSelect: "none"
 					}}>Downloading and extracting</Paragraph>
