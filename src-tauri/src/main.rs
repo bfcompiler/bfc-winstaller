@@ -44,7 +44,6 @@ fn main() {
                     let state = handle.state::<InstallerState>();
                     let install_state = state.0.lock().unwrap().install_state.clone();
                     drop(state);
-                    println!("Install state: {}", install_state);
                     if install_state == 1 {
                         cleanup::delete_appdata();
                     } else if install_state == 2 {
