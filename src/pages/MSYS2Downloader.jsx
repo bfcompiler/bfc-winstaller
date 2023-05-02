@@ -138,7 +138,11 @@ export default function MSYS2DownloaderPage() {
 						cursor: "pointer",
 						WebkitUserSelect: "none"
 					}} onClick={() => tf.open_link_in_default_browser("https://www.msys2.org/")}>msys2.org</span></Paragraph>
-					<Progress type="circle" percent={step / 6 * 100} format={percent => Math.round(percent) + "%"} />
+					<Progress type="circle" percent={step / 6 * 100} format={percent => {
+						return <span style={{
+							userSelect: "none"
+						}}>{Math.round(percent)}%</span>
+					}} />
 					<Paragraph style={{
 						position: "relative",
 						top: "50px",

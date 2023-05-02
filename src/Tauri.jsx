@@ -22,9 +22,12 @@ export function open_link_in_default_browser(url) {
 }
 
 export function generate_appdata() {
-	tauri.invoke("generate_appdata").then(location => {
-		store.dispatch(setAppdataPath(location));
-	});
+	let unlisten;
+	event.listen("generate_appdata", event => {
+		store.dispatch(setAppdataPath(event.payload));
+		unlisten();
+	}).then(e => unlisten = e);
+	tauri.invoke("generate_appdata");
 }
 
 export function get_url_contents(url) {

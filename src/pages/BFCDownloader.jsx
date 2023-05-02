@@ -125,7 +125,11 @@ export default function BFCDownloader() {
 					<Paragraph style={{
 						WebkitUserSelect: "none"
 					}}>Downloading and extracting</Paragraph>
-					<Progress type="circle" percent={step / 5 * 100} format={percent => Math.round(percent) + "%"} />
+					<Progress type="circle" percent={step / 5 * 100} format={percent => {
+						return <span style={{
+							userSelect: "none"
+						}}>{Math.round(percent)}%</span>
+					}} />
 					<Paragraph style={{
 						position: "relative",
 						top: "50px",

@@ -118,6 +118,7 @@ dependencies = [
  "tar",
  "tauri",
  "tauri-build",
+ "windows 0.48.0",
  "zip",
 ]
 

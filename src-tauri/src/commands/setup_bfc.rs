@@ -7,7 +7,7 @@ use tauri::{Manager, Runtime};
 
 #[tauri::command]
 pub async fn setup_bfc<R: Runtime>(
-    _: tauri::AppHandle<R>,
+    app: tauri::AppHandle<R>,
     window: tauri::Window<R>,
 	path: String
 ) -> Result<(), String> {
@@ -31,6 +31,9 @@ pub async fn setup_bfc<R: Runtime>(
 	new_exe_path.push("bfc.exe");
 	fs::rename(original_exe_path, new_exe_path).unwrap();
 	fs::remove_dir(&bfc_dir).unwrap();
+	let state = app.state::<super::super::InstallerState>();
+	state.0.lock().unwrap().install_state = 3;
+	drop(state);
 	window.emit_all("setup_bfc", ()).unwrap();
     Ok(())
 }

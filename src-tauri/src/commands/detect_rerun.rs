@@ -10,7 +10,7 @@ pub async fn detect_rerun<R: Runtime>(
     _: tauri::AppHandle<R>,
     window: tauri::Window<R>,
 ) -> Result<(), String> {
-    use std::{fs, path::PathBuf};
+    use std::path::PathBuf;
     let mut bfc_appdata_folder = PathBuf::from(std::env::var("localappdata").unwrap());
     bfc_appdata_folder.push("bfc");
     let mut bfc_exe = bfc_appdata_folder.clone();

@@ -11,10 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Github Icons to header and bfc installer step
+- Started working on adding rerun functionality for uninstalling, repairing, etc
+- Fallback functionality and clearing of appdata for if installer gets closed mid installation
 
 ### Changed
 - Patched the deleting file process to keep attempting to delete folder/file until successful
 - Updated submodule "assets" to commit 0170cd83a857edf0b1300ac8a417fa313b729e3b
+- Disabled being able to select text % inside of loading circles during MSYS2 installation and bfc installation
 
 ## [0.1.0] - 2023-05-02
 

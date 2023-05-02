@@ -34,16 +34,10 @@ use detect_rerun::detect_rerun;
 pub fn get_handler() -> impl Fn(Invoke<Wry>) {
     move |invoke| {
         match invoke.message.command() {
-            "download_to_from_url" => {
-                download_to_from_url::__cmd__download_to_from_url!(download_to_from_url, invoke)
-            }
+            "download_to_from_url" => download_to_from_url::__cmd__download_to_from_url!(download_to_from_url, invoke),
             "extract_tar_xz" => extract_tar_xz::__cmd__extract_tar_xz!(extract_tar_xz, invoke),
-            "generate_appdata" => {
-                generate_appdata::__cmd__generate_appdata!(generate_appdata, invoke)
-            }
-            "get_url_contents" => {
-                get_url_contents::__cmd__get_url_contents!(get_url_contents, invoke)
-            }
+            "generate_appdata" => generate_appdata::__cmd__generate_appdata!(generate_appdata, invoke),
+            "get_url_contents" => get_url_contents::__cmd__get_url_contents!(get_url_contents, invoke),
             "open_url" => open_url::__cmd__open_url!(open_url, invoke),
             "delete_file" => delete_file::__cmd__delete_file!(delete_file, invoke),
             "run_bash_command" => run_bash_commnd::__cmd__run_bash_commnd!(run_bash_commnd, invoke),
