@@ -38,10 +38,10 @@ const route = createBrowserRouter([
 		path: "/complete",
 		element: <Suspense fallback={FallbackPage}><CompletePage /></Suspense>
 	},
-	{
-		path: "/rerun",
-		element: <Suspense fallback={FallbackPage}><RerunPage /></Suspense>
-	}
+	// {
+	// 	path: "/rerun",
+	// 	element: <Suspense fallback={FallbackPage}><RerunPage /></Suspense>
+	// }
 ]);
 
 ReactDOM.render(<Provider store={store}><RouterProvider router={route} /></Provider>, document.getElementById("root"));
