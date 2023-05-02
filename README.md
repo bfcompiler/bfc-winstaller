@@ -10,7 +10,7 @@ Website for how to install and setup is available at [https://bfcompiler.github.
 
 ---
 
-### How to build is available at/in [BUILDING.md](internals/BUILDING)
+### How to build is available at/in [BUILDING.md](BUILDING.md)
 
-### Changelog available at/in [CHANGELOG.md](internals/CHANGELOG)
-### Licensed under [MIT license](internals/LICENSE) by Jacob Allen Morris in 2023
+### Changelog available at/in [CHANGELOG.md](CHANGELOG.md)
+### Licensed under [MIT license](LICENSE) by Jacob Allen Morris in 2023
