@@ -6,7 +6,7 @@
 ## Tools required
 1. Windows 10/11 
 2. NPM / NodeJS v19 (Personally on v19.8.1)
-3. Yarn v3 (Personally on v3.5.0)
+3. Yarn v3 (Personally on v3.5.1)
 4. Rust toolchain (atleast v1.69.0 and it's Visual Studio dependency) (Personally on v1.71.0-nightly)
 I also personally use Powershell v7 for my commandline interface.
 
