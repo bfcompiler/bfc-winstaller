@@ -23,13 +23,13 @@ export default function BFCDownloader() {
 	const [step, setStep] = React.useState(0);
 	const [stepMessage, setStepMessage] = React.useState("Querying bfc-win Releases");
 
-	React.useState(() => {
+	React.useEffect(() => {
 		switch (step) {
 			case 1:
-				setStepMessage("Downloading bfc-win")
+				setStepMessage("Downloading bfc-win");
 				break;
 			case 2:
-				setStepMessage("Unzipping bfc-win")
+				setStepMessage("Unzipping bfc-win");
 				break;
 			case 3:
 				setStepMessage("Deleting unused files");
@@ -38,10 +38,10 @@ export default function BFCDownloader() {
 				setStepMessage("Setting up bfc-win");
 				break;
 			case 5:
-				setStepMessage("Completed")
+				setStepMessage("Completed");
 				break;
 		}
-	}, [step])
+	}, [step]);
 
 	const isBfcSetup = useSelector(state => state.setupBfc.complete);
 	React.useEffect(() => {
@@ -57,7 +57,7 @@ export default function BFCDownloader() {
 			setStep(4);
 			tf.setup_bfc(adpath);
 		}
-	}, [deleteComplete, deletedFile, adpath])
+	}, [deleteComplete, deletedFile, adpath]);
 
 	const unzippedFile = useSelector(state => state.unzipFile.file);
 	const unzipComplete = useSelector(state => state.unzipFile.complete);
