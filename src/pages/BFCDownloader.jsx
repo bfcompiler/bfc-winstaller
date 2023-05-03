@@ -17,7 +17,7 @@ import { HIGHLIGHT_COLOR, BACKGROUND_COLOR } from '../ColorScheme';
 import GITHUB_ICON_BLACK from '../../assets/images/github-icon.png';
 import GITHUB_ICON_WHITE from '../../assets/images/github-icon-white.png';
 import CONSTANTS from '../Constants';
-import BFHeader from '../components/BFHeader';
+import BFHeader from '../Components/BFHeader';
 
 export default function BFCDownloader() {
 	const nav = useNavigate();
@@ -116,18 +116,24 @@ export default function BFCDownloader() {
 					<Title style={{
 						WebkitUserSelect: "none"
 					}}>Downloading bfc-win
-						<Tooltip title="Go to github for Brainf**k Compiler">
-							<img style={{
-								display: "inline",
-								width: "48px",
-								height: "auto",
-								transform: "translate(5px, 12px)",
-								cursor: "pointer"
-							}} src={hoveringGithub ? GITHUB_ICON_WHITE : GITHUB_ICON_BLACK} 
-							onMouseEnter={() => setHoveringGithub(true)} 
-							onMouseLeave={() => setHoveringGithub(false)} 
-							onClick={() => tf.open_link_in_default_browser("https://github.com/bfcompiler/bfc")} />
-						</Tooltip>
+						<div style={{
+							userSelect: "none"
+						}}>
+							<Tooltip title={<span style={{
+								userSelect: "none"
+							}}>Go to github for Brainf**k Compiler</span>}>
+								<img style={{
+									display: "inline",
+									width: "48px",
+									height: "auto",
+									transform: "translate(5px, 12px)",
+									cursor: "pointer"
+								}} src={hoveringGithub ? GITHUB_ICON_WHITE : GITHUB_ICON_BLACK}
+									onMouseEnter={() => setHoveringGithub(true)}
+									onMouseLeave={() => setHoveringGithub(false)}
+									onClick={() => tf.open_link_in_default_browser("https://github.com/bfcompiler/bfc")} />
+							</Tooltip>
+						</div>
 					</Title>
 					<Paragraph style={{
 						WebkitUserSelect: "none"

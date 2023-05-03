@@ -9,7 +9,7 @@ import { Layout, Space } from 'antd';
 const { Content } = Layout;
 
 import { BACKGROUND_COLOR } from '../ColorScheme';
-import BFHeader from '../components/BFHeader';
+import BFHeader from '../Components/BFHeader';
 
 export default function Rerun() {
 	return <div onContextMenu={e => e.preventDefault()}>

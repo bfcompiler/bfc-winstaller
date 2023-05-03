@@ -12,7 +12,7 @@ const { Title, Paragraph } = Typography;
 
 import tf from '../Tauri';
 import { HIGHLIGHT_COLOR, BACKGROUND_COLOR } from '../ColorScheme';
-import BFHeader from '../components/BFHeader';
+import BFHeader from '../Components/BFHeader';
 
 export default function CompletePage() {
 	const adpath = useSelector(state => state.appdata.path);

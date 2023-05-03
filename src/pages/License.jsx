@@ -11,7 +11,7 @@ import color from 'onecolor';
 
 const { Content } = Layout;
 const { Paragraph } = Typography;
-import BFHeader from '../components/BFHeader';
+import BFHeader from '../Components/BFHeader';
 import tf from '../Tauri';
 
 import { HIGHLIGHT_COLOR, BACKGROUND_COLOR } from '../ColorScheme';

@@ -32,18 +32,24 @@ export default function BFHeader() {
 			WebkitUserSelect: "none",
 			transform: "translate(-40px, -5px)"
 		}} copyable={false}>Brainf**k Winstaller</Title>
-		<Tooltip title="Go to github for bfc-winstaller" placement="left">
-			<img src={hovering ? GITHUB_ICON_WHITE : GITHUB_ICON_BLACK} style={{
-				position: "absolute",
-				top: "20px",
-				right: "20px",
-				width: "65px",
-				height: "auto",
-				cursor: "pointer"
-			}} 
-			onMouseEnter={() => setHovering(true)} 
-			onMouseLeave={() => setHovering(false)} 
-			onClick={() => open_link_in_default_browser("https://github.com/bfcompiler/bfc-winstaller")} />
-		</Tooltip>
+		<div style={{
+			userSelect: "none"
+		}}>
+			<Tooltip title={<span style={{
+				userSelect: "none"
+			}}>Go to github for bfc-winstaller</span>} placement="left">
+				<img src={hovering ? GITHUB_ICON_WHITE : GITHUB_ICON_BLACK} style={{
+					position: "absolute",
+					top: "20px",
+					right: "20px",
+					width: "65px",
+					height: "auto",
+					cursor: "pointer"
+				}}
+					onMouseEnter={() => setHovering(true)}
+					onMouseLeave={() => setHovering(false)}
+					onClick={() => open_link_in_default_browser("https://github.com/bfcompiler/bfc-winstaller")} />
+			</Tooltip>
+		</div>
 	</Header>
 }
