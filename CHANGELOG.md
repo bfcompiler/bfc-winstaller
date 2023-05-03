@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Added
 - Tooltips for github icons, for where they redirect you to
 
+## Changed
+- Changed title in Brainf\*\*k Compiler Downloader from "bfc-win" to the more accurate "Brainf\*\*k Compiler"
+
 ## [0.1.1] - 2023-05-02
 
 ### Added
