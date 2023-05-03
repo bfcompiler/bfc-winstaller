@@ -115,8 +115,8 @@ export default function BFCDownloader() {
 				}}>
 					<Title style={{
 						WebkitUserSelect: "none"
-					}}>Downloading bfc-win
-						<div style={{
+					}}>Downloading Brainf**k Compiler
+						<span style={{
 							userSelect: "none"
 						}}>
 							<Tooltip title={<span style={{
@@ -133,7 +133,7 @@ export default function BFCDownloader() {
 									onMouseLeave={() => setHoveringGithub(false)}
 									onClick={() => tf.open_link_in_default_browser("https://github.com/bfcompiler/bfc")} />
 							</Tooltip>
-						</div>
+						</span>
 					</Title>
 					<Paragraph style={{
 						WebkitUserSelect: "none"
