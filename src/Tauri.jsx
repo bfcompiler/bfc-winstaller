@@ -125,7 +125,6 @@ export function setup_bfc(path) {
 export function detect_rerun() {
 	let unlisten;
 	event.listen("detect_rerun", event => {
-		console.log(event);
 		store.dispatch(setIsRerun(event.payload));
 		unlisten();
 	}).then(e => unlisten = e);

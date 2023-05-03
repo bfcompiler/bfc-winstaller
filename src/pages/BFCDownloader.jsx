@@ -6,7 +6,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Layout, Space, Typography, Button, Progress, Tooltip } from 'antd';
+import { Layout, Space, Typography, Button, Progress } from 'antd';
 import color from 'onecolor';
 
 const { Content } = Layout;
@@ -14,10 +14,9 @@ const { Title, Paragraph } = Typography;
 
 import tf from '../Tauri';
 import { HIGHLIGHT_COLOR, BACKGROUND_COLOR } from '../ColorScheme';
-import GITHUB_ICON_BLACK from '../../assets/images/github-icon.png';
-import GITHUB_ICON_WHITE from '../../assets/images/github-icon-white.png';
 import CONSTANTS from '../Constants';
 import BFHeader from '../Components/BFHeader';
+import GithubIcon from '../Components/GithubIcon';
 
 export default function BFCDownloader() {
 	const nav = useNavigate();
@@ -116,24 +115,9 @@ export default function BFCDownloader() {
 					<Title style={{
 						WebkitUserSelect: "none"
 					}}>Downloading Brainf**k Compiler
-						<span style={{
-							userSelect: "none"
-						}}>
-							<Tooltip title={<span style={{
-								userSelect: "none"
-							}}>Go to github for Brainf**k Compiler</span>}>
-								<img style={{
-									display: "inline",
-									width: "48px",
-									height: "auto",
-									transform: "translate(5px, 12px)",
-									cursor: "pointer"
-								}} src={hoveringGithub ? GITHUB_ICON_WHITE : GITHUB_ICON_BLACK}
-									onMouseEnter={() => setHoveringGithub(true)}
-									onMouseLeave={() => setHoveringGithub(false)}
-									onClick={() => tf.open_link_in_default_browser("https://github.com/bfcompiler/bfc")} />
-							</Tooltip>
-						</span>
+						<GithubIcon link="https://github.com/bfcompiler/bfc" project="Brainf**k Compiler" size="48px" style={{
+							transform: "translate(5px, 0px)"
+						}} />
 					</Title>
 					<Paragraph style={{
 						WebkitUserSelect: "none"
