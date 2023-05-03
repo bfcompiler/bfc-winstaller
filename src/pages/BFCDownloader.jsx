@@ -6,7 +6,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Layout, Space, Typography, Button, Progress } from 'antd';
+import { Layout, Space, Typography, Button, Progress, Tooltip } from 'antd';
 import color from 'onecolor';
 
 const { Content } = Layout;
@@ -115,13 +115,20 @@ export default function BFCDownloader() {
 				}}>
 					<Title style={{
 						WebkitUserSelect: "none"
-					}}>Downloading bfc-win<img style={{
-						display: "inline",
-						width: "48px",
-						height: "auto",
-						transform: "translate(5px, 12px)",
-						cursor: "pointer"
-					}} src={hoveringGithub ? GITHUB_ICON_WHITE : GITHUB_ICON_BLACK} onMouseEnter={() => setHoveringGithub(true)} onMouseLeave={() => setHoveringGithub(false)} onClick={() => tf.open_link_in_default_browser("https://github.com/bfcompiler/bfc")}/></Title>
+					}}>Downloading bfc-win
+						<Tooltip title="Go to github for Brainf**k Compiler">
+							<img style={{
+								display: "inline",
+								width: "48px",
+								height: "auto",
+								transform: "translate(5px, 12px)",
+								cursor: "pointer"
+							}} src={hoveringGithub ? GITHUB_ICON_WHITE : GITHUB_ICON_BLACK} 
+							onMouseEnter={() => setHoveringGithub(true)} 
+							onMouseLeave={() => setHoveringGithub(false)} 
+							onClick={() => tf.open_link_in_default_browser("https://github.com/bfcompiler/bfc")} />
+						</Tooltip>
+					</Title>
 					<Paragraph style={{
 						WebkitUserSelect: "none"
 					}}>Downloading and extracting</Paragraph>
