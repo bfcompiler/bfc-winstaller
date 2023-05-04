@@ -23,7 +23,6 @@ export default function BFCDownloader() {
 	const adpath = useSelector(state => state.appdata.path);
 	const [step, setStep] = React.useState(0);
 	const [stepMessage, setStepMessage] = React.useState("Querying bfc-win Releases");
-	const [hoveringGithub, setHoveringGithub] = React.useState(false);
 
 	React.useEffect(() => {
 		switch (step) {
