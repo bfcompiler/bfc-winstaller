@@ -3,13 +3,13 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-use tauri::{Manager, Runtime};
+use tauri::Runtime;
 
 #[tauri::command]
 pub async fn detect_rerun<R: Runtime>(
     _: tauri::AppHandle<R>,
-    window: tauri::Window<R>,
-) -> Result<(), String> {
+    _: tauri::Window<R>,
+) -> Result<bool, String> {
     use std::path::PathBuf;
     let mut bfc_appdata_folder = PathBuf::from(std::env::var("localappdata").unwrap());
     bfc_appdata_folder.push("bfc");
@@ -18,9 +18,8 @@ pub async fn detect_rerun<R: Runtime>(
     bfc_exe.push("bfc.exe");
     msys64_folder.push("msys64");
     if bfc_appdata_folder.exists() && bfc_exe.exists() && msys64_folder.exists() {
-        window.emit_all("detect_rerun", true).unwrap();
+        Ok(true)
     } else {
-        window.emit_all("detect_rerun", false).unwrap();
+        Ok(false)
     }
-    Ok(())
 }

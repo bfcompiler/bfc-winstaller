@@ -30,10 +30,12 @@ function HoverText(props) {
 export default function LicensePage() {
 	const nav = useNavigate();
 	const [isModalOpen, setIsModalOpen] = React.useState(false);
-	const isRerun = useSelector(state => state.detectRerun.rerun);
+	const [isRerun, setIsRerun] = React.useState(false);
 
 	React.useEffect(() => {
-		tf.detect_rerun();
+		tf.detect_rerun().then(payload => {
+			setIsRerun(payload);
+		});
 	}, []);
 
 

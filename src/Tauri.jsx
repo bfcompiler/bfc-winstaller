@@ -15,7 +15,6 @@ import { setCommandOutput } from './slices/BashCommand';
 import { setMsys2Setup } from './slices/SetupMsys2';
 import { setUnzipped } from './slices/UnzipFile';
 import { setBfcSetup } from './slices/SetupBfc';
-import { setIsRerun } from './slices/DetectRerun';
 
 export function open_link_in_default_browser(url) {
 	tauri.invoke("open_url", { url });
@@ -123,12 +122,11 @@ export function setup_bfc(path) {
 }
 
 export function detect_rerun() {
-	let unlisten;
-	event.listen("detect_rerun", event => {
-		store.dispatch(setIsRerun(event.payload));
-		unlisten();
-	}).then(e => unlisten = e);
-	tauri.invoke("detect_rerun");
+	return new Promise((res, rej) => {
+		tauri.invoke("detect_rerun").then(payload => {
+			res(payload);
+		});
+	});
 }
 
 export function exit_process() {
