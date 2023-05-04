@@ -1,5 +1,5 @@
 # Building Brainf\*\*k Compiler W-installer
-### Version # 0.1.2
+### Version # 0.1.3
 
 ---
 
