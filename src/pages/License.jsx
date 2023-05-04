@@ -6,7 +6,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Layout, Space, Typography, Button, Modal } from 'antd';
-import { useSelector } from 'react-redux';
 import color from 'onecolor';
 
 const { Content } = Layout;

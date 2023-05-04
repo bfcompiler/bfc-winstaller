@@ -3,122 +3,69 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-import { tauri, event } from '@tauri-apps/api';
-
-import store from './Store';
-import { setComplete as downloadSetComplete } from './slices/DownloadedFile';
-import { setComplete as extractSetComplete } from './slices/ExtractXZTar'
-import { setDeleted } from './slices/DeleteFile';
-import { setCommandOutput } from './slices/BashCommand';
-import { setMsys2Setup } from './slices/SetupMsys2';
-import { setUnzipped } from './slices/UnzipFile';
-import { setBfcSetup } from './slices/SetupBfc';
+import { tauri } from '@tauri-apps/api';
 
 export function open_link_in_default_browser(url) {
 	tauri.invoke("open_url", { url });
 }
 
 export function generate_appdata() {
-	return new Promise((res, rej) => {
-		tauri.invoke("generate_appdata").then(payload => {
-			res(payload);
-		});
+	return new Promise(res => {
+		tauri.invoke("generate_appdata").then(payload => res(payload));
 	});
 }
 
 export function get_url_contents(url) {
-	return new Promise((res, rej) => {
-		tauri.invoke("get_url_contents", { url }).then(payload => {
-			res(payload);
-		});
+	return new Promise(res => {
+		tauri.invoke("get_url_contents", { url }).then(payload => res(payload));
 	});
 }
 
 export function download_to_from_url(url, path) {
-	let unlisten;
-	event.listen("download_to_from_url", event => {
-		store.dispatch(downloadSetComplete({
-			file: event.payload,
-			complete: true
-		}));
-		unlisten();
-	}).then(e => unlisten = e);
-	tauri.invoke("download_to_from_url", { url, path });
+	return new Promise(res => {
+		tauri.invoke("download_to_from_url", { url, path }).then(payload => res(payload));
+	});
 }
 
 export function extract_tar_xz(input, output) {
-	let unlisten;
-	event.listen("extract_tar_xz", event => {
-		store.dispatch(extractSetComplete({
-			file: event.payload,
-			complete: true
-		}));
-		unlisten();
-	}).then(e => unlisten = e);
-	tauri.invoke("extract_tar_xz", { xzPath: input, outputPath: output });
+	return new Promise(res => {
+		tauri.invoke("extract_tar_xz", { xzPath: input, outputPath: output }).then(() => res());
+	});
 }
 
 export function delete_path(path) {
-	let unlisten;
-	event.listen("delete_path", event => {
-		store.dispatch(setDeleted({
-			file: event.payload,
-			complete: true
-		}));
-		unlisten();
-	}).then(e => unlisten = e);
-	tauri.invoke("delete_file", { path });
+	return new Promise(res => {
+		tauri.invoke("delete_path", { path }).then(() => res());
+	});
 }
 
 export function run_bash_command(path, command) {
-	let unlisten;
-	event.listen("run_bash_command", event => {
-		store.dispatch(setCommandOutput({
-			command: event.payload.command,
-			code: event.payload.status,
-			output: event.payload.output,
-			completed: true
-		}));
-		unlisten();
-	}).then(e => unlisten = e);
-	tauri.invoke("run_bash_command", { path, command });
+	return new Promise(res => {
+		tauri.invoke("run_bash_command", { path, command }).then(payload => res(payload))
+	});
 }
 
 export function setup_msys2(path) {
-	let unlisten;
-	event.listen("setup_msys2", event => {
-		store.dispatch(setMsys2Setup(true));
-		unlisten();
-	}).then(e => unlisten = e);
-	tauri.invoke("setup_msys2", { path });
+	return new Promise(res => {
+		tauri.invoke("setup_msys2", { path }).then(() => res());
+	});
 }
 
 export function unzip_file(input, output) {
-	let unlisten;
-	event.listen("unzip_file", event => {
-		store.dispatch(setUnzipped({
-			completed: true,
-			file: event.payload
-		}));
-		unlisten();
-	}).then(e => unlisten = e);
-	tauri.invoke("unzip_file", { input, output });
+	return new Promise(res => {
+		tauri.invoke("unzip_file", { input, output }).then(() => res());
+	});
 }
 
 export function setup_bfc(path) {
-	let unlisten;
-	event.listen("setup_bfc", event => {
-		store.dispatch(setBfcSetup());
-		unlisten();
-	}).then(e => unlisten = e);
-	tauri.invoke("setup_bfc", { path });
+	return new Promise(res => {
+		tauri.invoke("setup_bfc", { path }).then(() => res());
+	});	
 }
 
 export function detect_rerun() {
-	return new Promise((res, rej) => {
-		tauri.invoke("detect_rerun").then(payload => {
-			res(payload);
-		});
+	return new Promise(res => {
+		tauri.invoke("detect_rerun").then(payload => res(payload));
 	});
 }
 

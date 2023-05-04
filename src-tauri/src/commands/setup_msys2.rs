@@ -8,7 +8,7 @@ use tauri::{Runtime, Manager};
 #[tauri::command]
 pub async fn setup_msys2<R: Runtime>(
     app: tauri::AppHandle<R>,
-    window: tauri::Window<R>,
+    _: tauri::Window<R>,
 	path: String
 ) -> Result<(), String> {
     use std::{process::{Command, Stdio}, os::windows::process::CommandExt};
@@ -23,6 +23,5 @@ pub async fn setup_msys2<R: Runtime>(
 		.spawn()
 		.unwrap();
 	msys2.wait_with_output().unwrap();
-	window.emit_all("setup_msys2", true).unwrap();
 	Ok(())
 }

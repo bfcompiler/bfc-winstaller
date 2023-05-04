@@ -3,12 +3,12 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-use tauri::{Manager, Runtime};
+use tauri::Runtime;
 
 #[tauri::command]
-pub async fn delete_file<R: Runtime>(
+pub async fn delete_path<R: Runtime>(
     _: tauri::AppHandle<R>,
-    window: tauri::Window<R>,
+    _: tauri::Window<R>,
     path: String,
 ) -> Result<(), String> {
     use std::{
@@ -26,16 +26,9 @@ pub async fn delete_file<R: Runtime>(
                 removing_file = fs::remove_file(&path);
             } else {
                 removing_file.unwrap();
-                window
-                    .emit_all("delete_path", path.to_str().unwrap())
-                    .unwrap();
                 break;
             }
         }
-    } else {
-        window
-            .emit_all("delete_path", path.to_str().unwrap())
-            .unwrap();
     }
     Ok(())
 }

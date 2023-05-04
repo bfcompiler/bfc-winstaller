@@ -3,12 +3,12 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-use tauri::{Manager, Runtime};
+use tauri::Runtime;
 
 #[tauri::command]
 pub async fn extract_tar_xz<R: Runtime>(
     _: tauri::AppHandle<R>,
-    window: tauri::Window<R>,
+    _: tauri::Window<R>,
     xz_path: String,
     output_path: String,
 ) -> Result<(), String> {
@@ -29,6 +29,5 @@ pub async fn extract_tar_xz<R: Runtime>(
     drop(xz_reader);
     let mut archive = Archive::new(&xz_output[..]);
     archive.unpack(output_path).unwrap();
-    window.emit_all("extract_tar_xz", &xz_path).unwrap();
     Ok(())
 }

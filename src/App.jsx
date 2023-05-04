@@ -6,9 +6,7 @@
 import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Provider } from 'react-redux';
 
-import store from './Store';
 import FallbackPage from './pages/Fallback';
 const LicensePage = lazy(() => import("./pages/License"));
 const MSYS2DownloaderPage = lazy(() => import("./pages/MSYS2Downloader"));
@@ -44,4 +42,4 @@ const route = createBrowserRouter([
 	// }
 ]);
 
-ReactDOM.render(<Provider store={store}><RouterProvider router={route} /></Provider>, document.getElementById("root"));
+ReactDOM.render(<RouterProvider router={route} />, document.getElementById("root"));

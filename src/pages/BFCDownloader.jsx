@@ -5,7 +5,6 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { Layout, Space, Typography, Button, Progress } from 'antd';
 import color from 'onecolor';
 
@@ -18,9 +17,18 @@ import CONSTANTS from '../Constants';
 import BFHeader from '../Components/BFHeader';
 import GithubIcon from '../Components/GithubIcon';
 
+function getDownloadUrl(urlContents) {
+	let parsed = JSON.parse(urlContents);
+	let assets = parsed[0].assets;
+	for (let i = 0; i < assets.length; i++) {
+		if (assets[i].name.endsWith(".zip")) {
+			return assets[i].browser_download_url;
+		}
+	}
+}
+
 export default function BFCDownloader() {
 	const nav = useNavigate();
-	const [adpath, setAdpath] = React.useState("");
 	const [step, setStep] = React.useState(0);
 	const [stepMessage, setStepMessage] = React.useState("Querying bfc-win Releases");
 
@@ -44,57 +52,19 @@ export default function BFCDownloader() {
 		}
 	}, [step]);
 
-	const isBfcSetup = useSelector(state => state.setupBfc.complete);
-	React.useEffect(() => {
-		if (isBfcSetup) {
-			setStep(5);
-		}
-	}, [isBfcSetup]);
-
-	const deletedFile = useSelector(state => state.deleteFile.file);
-	const deleteComplete = useSelector(state => state.deleteFile.complete);
-	React.useEffect(() => {
-		if (deletedFile == adpath + "\\bfc.zip" && deleteComplete) {
-			setStep(4);
-			tf.setup_bfc(adpath);
-		}
-	}, [deleteComplete, deletedFile, adpath]);
-
-	const unzippedFile = useSelector(state => state.unzipFile.file);
-	const unzipComplete = useSelector(state => state.unzipFile.complete);
-	React.useEffect(() => {
-		if (unzippedFile == adpath + "\\bfc.zip" && unzipComplete) {
-			setStep(3);
-			tf.delete_path(adpath + "\\bfc.zip");
-		}
-	}, [unzipComplete, unzippedFile, adpath]);
-
-	const downloadedFile = useSelector(state => state.downloadedFile.file);
-	const downloadComplete = useSelector(state => state.downloadedFile.complete);
-	React.useEffect(() => {
-		if (downloadedFile == adpath + "\\bfc.zip" && downloadComplete) {
-			setStep(2);
-			tf.unzip_file(adpath + "\\bfc.zip", adpath + "\\bfc");
-		}
-	}, [downloadedFile, downloadComplete, adpath]);
-
-	const [bfcURL, setBfcURL] = React.useState("");
-
-	React.useEffect(() => {
-		tf.generate_appdata().then(appdata => {
-			setAdpath(appdata);
-			tf.get_url_contents(CONSTANTS['BFC_DATA_URL']).then(urlContents => {
-				let parsed = JSON.parse(urlContents);
-				let assets = parsed[0].assets;
-				for (let i = 0; i < assets.length; i++) {
-					if (assets[i].name.indexOf("x86_64") > -1 && assets[i].name.indexOf("msvc") > -1) {
-						setStep(1);
-						tf.download_to_from_url(assets[i].browser_download_url, appdata + "\\bfc.zip");
-						setBfcURL(assets[i].browser_download_url);
-					}
-				}
-			});
-		});
+	React.useEffect(async () => {
+		let appdata = await tf.generate_appdata();
+		let urlContents = await tf.get_url_contents(CONSTANTS['BFC_DATA_URL']);
+		let downloadUrl = getDownloadUrl(urlContents);
+		setStep(1);
+		await tf.download_to_from_url(downloadUrl, appdata + "\\bfc.zip");
+		setStep(2);
+		await tf.unzip_file(appdata + "\\bfc.zip", appdata);
+		setStep(3);
+		await tf.delete_path(appdata + "\\bfc.zip");
+		setStep(4);
+		await tf.setup_bfc(appdata);
+		setStep(5);
 	}, []);
 
 	return <div onContextMenu={e => e.preventDefault()}>

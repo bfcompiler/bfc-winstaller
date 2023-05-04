@@ -4,7 +4,6 @@
 // https://opensource.org/licenses/MIT
 
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Layout, Space, Typography, Button } from 'antd';
 
 const { Content } = Layout;
@@ -18,9 +17,7 @@ export default function CompletePage() {
 	const [adpath, setAdpath] = React.useState("");
 
 	React.useEffect(() => {
-		tf.generate_appdata().then(payload => {
-			setAdpath(payload);
-		});
+		tf.generate_appdata().then(appdata => setAdpath(appdata));
 	}, []);
 
 	return <div onContextMenu={e => e.preventDefault()}>

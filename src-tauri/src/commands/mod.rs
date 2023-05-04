@@ -5,7 +5,7 @@
 
 use tauri::{Invoke, Wry};
 
-mod delete_file;
+mod delete_path;
 mod download_to_from_url;
 mod extract_tar_xz;
 mod generate_appdata;
@@ -18,7 +18,7 @@ mod setup_bfc;
 mod exit_process;
 mod detect_rerun;
 
-use delete_file::delete_file;
+use delete_path::delete_path;
 use download_to_from_url::download_to_from_url;
 use extract_tar_xz::extract_tar_xz;
 use generate_appdata::generate_appdata;
@@ -39,7 +39,7 @@ pub fn get_handler() -> impl Fn(Invoke<Wry>) {
             "generate_appdata" => generate_appdata::__cmd__generate_appdata!(generate_appdata, invoke),
             "get_url_contents" => get_url_contents::__cmd__get_url_contents!(get_url_contents, invoke),
             "open_url" => open_url::__cmd__open_url!(open_url, invoke),
-            "delete_file" => delete_file::__cmd__delete_file!(delete_file, invoke),
+            "delete_path" => delete_path::__cmd__delete_path!(delete_path, invoke),
             "run_bash_command" => run_bash_commnd::__cmd__run_bash_commnd!(run_bash_commnd, invoke),
             "setup_msys2" => setup_msys2::__cmd__setup_msys2!(setup_msys2, invoke),
             "unzip_file" => unzip_file::__cmd__unzip_file!(unzip_file, invoke),

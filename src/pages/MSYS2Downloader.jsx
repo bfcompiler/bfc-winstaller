@@ -5,7 +5,6 @@
 
 import React from 'react';
 import { Layout, Space, Typography, Progress, Button } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
 import color from 'onecolor';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,14 +14,21 @@ const { Title, Paragraph } = Typography;
 import { HIGHLIGHT_COLOR, BACKGROUND_COLOR } from '../ColorScheme';
 import tf from '../Tauri';
 import CONSTANTS from '../Constants';
-import { flushCommand } from '../slices/BashCommand';
 import BFHeader from '../Components/BFHeader';
+
+
+function getDownloadUrl(urlContents) {
+	let parsed = JSON.parse(urlContents);
+	let assets = parsed[0].assets;
+	for (let i = 0; i < assets.length; i++) {
+		if (assets[i].name.endsWith(".tar.xz")) {
+			return assets[i].browser_download_url;
+		}
+	}
+}
 
 export default function MSYS2DownloaderPage() {
 	const nav = useNavigate();
-	const [adpath, setAdpath] = React.useState("");
-	const dispatch = useDispatch();
-
 	const [step, setStep] = React.useState(0);
 	const [stepMessage, setStepMessage] = React.useState("Querying MSYS2 Releases");
 
@@ -48,65 +54,21 @@ export default function MSYS2DownloaderPage() {
 		}
 	}, [step]);
 
-	const bashCommand = useSelector(state => state.bashCommand);
-	React.useEffect(() => {
-		if (bashCommand.command == "pacman -Sy --noconfirm mingw-w64-x86_64-toolchain" && bashCommand.completed == true) {
-			console.log(bashCommand.output);
-			setStep(6);
-			dispatch(flushCommand());
-		}
-	}, [bashCommand])
-
-	const msys2Completed = useSelector(state => state.setupMsys2.completed);
-	React.useEffect(() => {
-		if (msys2Completed) {
-			setStep(5);
-			tf.run_bash_command(adpath + "\\msys64\\usr\\bin\\bash.exe", "pacman -Sy --noconfirm mingw-w64-x86_64-toolchain");
-		}
-	}, [msys2Completed]);
-
-	const deletedFile = useSelector(state => state.deleteFile.file);
-	const deleteComplete = useSelector(state => state.deleteFile.complete);
-	React.useEffect(() => {
-		if (deletedFile == adpath + "\\msys2.tar.xz" && deleteComplete) {
-			setStep(4);
-			tf.setup_msys2(adpath + "\\msys64\\msys2_shell.cmd");
-		}
-	}, [deleteComplete, deletedFile, adpath])
-
-	const extractedFile = useSelector(state => state.extractXZTar.file);
-	const extractComplete = useSelector(state => state.extractXZTar.complete);
-	React.useEffect(() => {
-		if (extractedFile == adpath + "\\msys2.tar.xz" && extractComplete) {
-			setStep(3);
-			tf.delete_path(adpath + "\\msys2.tar.xz");
-		}
-	}, [extractedFile, extractComplete, adpath]);
-
-	const downloadedFile = useSelector(state => state.downloadedFile.file);
-	const downloadComplete = useSelector(state => state.downloadedFile.complete);
-	React.useEffect(() => {
-		if (downloadedFile == adpath + "\\msys2.tar.xz" && downloadComplete) {
-			setStep(2);
-			tf.extract_tar_xz(adpath + "\\msys2.tar.xz", adpath);
-		}
-	}, [downloadedFile, downloadComplete, adpath]);
-
-	React.useEffect(() => {
-		tf.generate_appdata().then(appdata => {
-			setAdpath(appdata);
-			tf.get_url_contents(CONSTANTS['MSYS2_DATA_URL']).then(urlContents => {
-				let parsed = JSON.parse(urlContents);
-				let assets = parsed[0].assets;
-				for (let i = 0; i < assets.length; i++) {
-					if (assets[i].name.endsWith(".tar.xz")) {
-						setStep(1);
-						tf.download_to_from_url(assets[i].browser_download_url, appdata + "\\msys2.tar.xz");
-						break;
-					}
-				}
-			});
-		});
+	React.useEffect(async () => {
+		let appdata = await tf.generate_appdata();
+		let urlContents = await tf.get_url_contents(CONSTANTS['MSYS2_DATA_URL']);
+		let downloadUrl = getDownloadUrl(urlContents);
+		setStep(1);
+		await tf.download_to_from_url(downloadUrl, appdata + "\\msys2.tar.xz");
+		setStep(2);
+		await tf.extract_tar_xz(appdata + "\\msys2.tar.xz", appdata);
+		setStep(3);
+		await tf.delete_path(appdata + "\\msys2.tar.xz");
+		setStep(4);
+		await tf.setup_msys2(appdata + "\\msys64\\msys2_shell.cmd");
+		setStep(5);
+		await tf.run_bash_command(appdata + "\\msys64\\usr\\bin\\bash.exe", "pacman -Sy --noconfirm mingw-w64-x86_64-toolchain");
+		setStep(6);
 	}, []);
 
 	return <div onContextMenu={e => e.preventDefault()}>
