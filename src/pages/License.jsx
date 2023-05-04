@@ -97,11 +97,18 @@ SOFTWARE.`.split("\n");
 					</Layout>
 				</Content>
 			</Layout>
-			<Modal title="Accept License" open={isModalOpen} okText="Yes" okButtonProps={{
+			<Modal 
+			// Accept License
+			title={<span style={{ userSelect: "none" }}>Accept License</span>}
+			open={isModalOpen} 
+			okText="Yes" 
+			okButtonProps={{
 				style: {
 					backgroundColor: HIGHLIGHT_COLOR
 				}
-			}} cancelText="No" onOk={() => {
+			}} 
+			cancelText="No" 
+			onOk={() => {
 				// if (isRerun == null) {
 				// 	nav("/");
 				// } else if (!isRerun) {
@@ -110,8 +117,12 @@ SOFTWARE.`.split("\n");
 				// 	nav("/rerun");
 				// }
 				nav("/warning");
-			}} onCancel={() => setIsModalOpen(false)}>
-				Are you sure you accept the MIT License?
+			}} 
+			onCancel={() => setIsModalOpen(false)}
+			>
+				<span style={{
+					userSelect: "none"
+				}}>Are you sure you accept the MIT License?</span>
 			</Modal>
 		</Space>
 	</div>;

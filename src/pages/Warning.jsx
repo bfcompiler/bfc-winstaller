@@ -84,12 +84,24 @@ Thanks from the application developer, Jacob Morris
 					</Layout>
 				</Content>
 			</Layout>
-			<Modal title="Accept install" open={isModalOpen} okText="Yes" okButtonProps={{
+			<Modal 
+			title={<span style={{ userSelect: "none" }}>Accept install warning?</span>} 
+			open={isModalOpen} 
+			okText="Yes" 
+			okButtonProps={{
 				style: {
 					backgroundColor: HIGHLIGHT_COLOR
 				}
-			}} cancelText="No" onOk={() => nav("/msys2-downloader")} onCancel={() => setIsModalOpen(false)}>
-				Are you sure?
+			}} 
+			cancelText="No" 
+			onOk={() => nav("/msys2-downloader")} 
+			onCancel={() => setIsModalOpen(false)}
+			>
+				<span style={{
+					userSelect: "none"
+				}}>
+					Are you sure?
+				</span>
 			</Modal>
 		</Space>
 	</div>;
