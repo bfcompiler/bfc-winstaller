@@ -92,28 +92,20 @@ export default function MSYS2DownloaderPage() {
 		}
 	}, [downloadedFile, downloadComplete, adpath]);
 
-	const [msys2XZURL, setMsys2XZURL] = React.useState("");
-	const rawUrlContents = useSelector(state => state.urlContents.contents);
-	const selectedUrl = useSelector(state => state.urlContents.url);
-	React.useEffect(() => {
-		if (selectedUrl == CONSTANTS['MSYS2_DATA_URL'] && msys2XZURL == "") {
-			let parsed = JSON.parse(rawUrlContents);
-			let assets = parsed[0].assets;
-			for (let i = 0; i < assets.length; i++) {
-				if (assets[i].name.endsWith(".tar.xz")) {
-					tf.download_to_from_url(assets[i].browser_download_url, adpath + "\\msys2.tar.xz");
-					setMsys2XZURL(assets[i].browser_download_url);
-					setStep(1);
-					break;
-				}
-			}
-		}
-	}, [selectedUrl, rawUrlContents, msys2XZURL, adpath]);
-
 	React.useEffect(() => {
 		tf.generate_appdata().then(appdata => {
 			setAdpath(appdata);
-			tf.get_url_contents(CONSTANTS['MSYS2_DATA_URL']);
+			tf.get_url_contents(CONSTANTS['MSYS2_DATA_URL']).then(urlContents => {
+				let parsed = JSON.parse(urlContents);
+				let assets = parsed[0].assets;
+				for (let i = 0; i < assets.length; i++) {
+					if (assets[i].name.endsWith(".tar.xz")) {
+						setStep(1);
+						tf.download_to_from_url(assets[i].browser_download_url, appdata + "\\msys2.tar.xz");
+						break;
+					}
+				}
+			});
 		});
 	}, []);
 

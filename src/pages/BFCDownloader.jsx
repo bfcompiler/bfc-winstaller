@@ -79,26 +79,21 @@ export default function BFCDownloader() {
 	}, [downloadedFile, downloadComplete, adpath]);
 
 	const [bfcURL, setBfcURL] = React.useState("");
-	const rawUrlContents = useSelector(state => state.urlContents.contents);
-	const selectedUrl = useSelector(state => state.urlContents.url);
-	React.useEffect(() => {
-		if (selectedUrl == CONSTANTS['BFC_DATA_URL'] && bfcURL == "") {
-			let parsed = JSON.parse(rawUrlContents);
-			let assets = parsed[0].assets;
-			for (let i = 0; i < assets.length; i++) {
-				if (assets[i].name.indexOf("x86_64") > -1 && assets[i].name.indexOf("msvc") > -1) {
-					setStep(1);
-					tf.download_to_from_url(assets[i].browser_download_url, adpath + "\\bfc.zip");
-					setBfcURL(assets[i].browser_download_url);
-				}
-			}
-		}
-	}, [rawUrlContents, selectedUrl, bfcURL]);
 
 	React.useEffect(() => {
-		tf.generate_appdata().then(payload => {
-			setAdpath(payload);
-			tf.get_url_contents(CONSTANTS['BFC_DATA_URL']);
+		tf.generate_appdata().then(appdata => {
+			setAdpath(appdata);
+			tf.get_url_contents(CONSTANTS['BFC_DATA_URL']).then(urlContents => {
+				let parsed = JSON.parse(urlContents);
+				let assets = parsed[0].assets;
+				for (let i = 0; i < assets.length; i++) {
+					if (assets[i].name.indexOf("x86_64") > -1 && assets[i].name.indexOf("msvc") > -1) {
+						setStep(1);
+						tf.download_to_from_url(assets[i].browser_download_url, appdata + "\\bfc.zip");
+						setBfcURL(assets[i].browser_download_url);
+					}
+				}
+			});
 		});
 	}, []);
 

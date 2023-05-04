@@ -6,7 +6,6 @@
 import { tauri, event } from '@tauri-apps/api';
 
 import store from './Store';
-import { setContents } from './slices/UrlContents';
 import { setComplete as downloadSetComplete } from './slices/DownloadedFile';
 import { setComplete as extractSetComplete } from './slices/ExtractXZTar'
 import { setDeleted } from './slices/DeleteFile';
@@ -28,15 +27,11 @@ export function generate_appdata() {
 }
 
 export function get_url_contents(url) {
-	let unlisten;
-	event.listen("get_url_contents", event => {
-		store.dispatch(setContents({
-			contents: event.payload,
-			url
-		}));
-		unlisten();
-	}).then(e => unlisten = e);
-	tauri.invoke("get_url_contents", { url });
+	return new Promise((res, rej) => {
+		tauri.invoke("get_url_contents", { url }).then(payload => {
+			res(payload);
+		});
+	});
 }
 
 export function download_to_from_url(url, path) {
