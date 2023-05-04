@@ -1,5 +1,5 @@
 # Building Brainf\*\*k Compiler W-installer
-### Version # 0.1.3
+### Version # 0.1.4
 
 ---
 
@@ -24,4 +24,8 @@ Assuming all tools are installed and on the correct versions, the following shou
 ---
 
 ## Compressing executable even further
-##### Coming soon...
+To compress the executable I recommend using the Ultimate Packer for eXecutables (UPX), available at [upx.github.io](https://upx.github.io/).
+Here are the steps to setup and use to compress the executable.
+1. Download [UPX](https://upx.github.io/) to the root of the project
+2. Extract ZIP archive in same directory as the ZIP file
+3. Pack executable using UPX, using the command: `./<UPX DIRECTORY>/upx.exe -f9 ./src-tauri/target/x86_64-pc-windows-msvc/release/bfc-winstaller.exe`
