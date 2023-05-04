@@ -19,7 +19,7 @@ Assuming all tools are installed and on the correct versions, the following shou
 2. Enter directory: `cd bfc-winstaller`
 3. Install yarn dependencies: `yarn install`
 4. Build using yarn: `cargo tauri build --target x86_64-pc-windows-msvc -- -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort`
-5. Executable is available at `<PROJECT DIRECTORY>/src-tauri/target/release/bfc-winstaller.exe`
+5. Executable is available at `<PROJECT DIRECTORY>/src-tauri/target/x86_64-pc-windows-msvc/release/bfc-winstaller.exe`
 
 ---
 
