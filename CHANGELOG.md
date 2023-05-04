@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Changed
 - Completely rewrote the functionality side of the app to be more async and error-proof
+- Updated from Tauri 1.2 to 1.3
 
 ## [0.1.2] - 2023-05-03
 
