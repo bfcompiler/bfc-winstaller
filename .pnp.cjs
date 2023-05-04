@@ -33,8 +33,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/plugin-transform-react-jsx-development", "virtual:d1efcf44525081a1906d5d2dfbc1ee952a3fad243308350d0db8af70f13510226a56faa08322bac3a1c13bc312bf0074870dbc0d851219cb60e7bf515bc68c63#npm:7.18.6"],\
             ["@preact/preset-vite", "virtual:d1efcf44525081a1906d5d2dfbc1ee952a3fad243308350d0db8af70f13510226a56faa08322bac3a1c13bc312bf0074870dbc0d851219cb60e7bf515bc68c63#npm:2.5.0"],\
             ["@reduxjs/toolkit", "virtual:d1efcf44525081a1906d5d2dfbc1ee952a3fad243308350d0db8af70f13510226a56faa08322bac3a1c13bc312bf0074870dbc0d851219cb60e7bf515bc68c63#npm:1.9.5"],\
-            ["@tauri-apps/api", "npm:1.2.0"],\
-            ["@tauri-apps/cli", "npm:1.2.3"],\
+            ["@tauri-apps/api", "npm:1.3.0"],\
+            ["@tauri-apps/cli", "npm:1.3.0"],\
             ["antd", "virtual:d1efcf44525081a1906d5d2dfbc1ee952a3fad243308350d0db8af70f13510226a56faa08322bac3a1c13bc312bf0074870dbc0d851219cb60e7bf515bc68c63#npm:5.4.6"],\
             ["babel-plugin-transform-hook-names", "virtual:d1efcf44525081a1906d5d2dfbc1ee952a3fad243308350d0db8af70f13510226a56faa08322bac3a1c13bc312bf0074870dbc0d851219cb60e7bf515bc68c63#npm:1.0.2"],\
             ["onecolor", "npm:4.0.0"],\
@@ -1242,109 +1242,109 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@tauri-apps/api", [\
-        ["npm:1.2.0", {\
-          "packageLocation": "./.yarn/cache/@tauri-apps-api-npm-1.2.0-71fff21a2b-15b0b805d9.zip/node_modules/@tauri-apps/api/",\
+        ["npm:1.3.0", {\
+          "packageLocation": "./.yarn/cache/@tauri-apps-api-npm-1.3.0-aa89adc7a0-d2a9b5e312.zip/node_modules/@tauri-apps/api/",\
           "packageDependencies": [\
-            ["@tauri-apps/api", "npm:1.2.0"]\
+            ["@tauri-apps/api", "npm:1.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@tauri-apps/cli", [\
-        ["npm:1.2.3", {\
-          "packageLocation": "./.yarn/cache/@tauri-apps-cli-npm-1.2.3-22b0275a01-1df8404183.zip/node_modules/@tauri-apps/cli/",\
+        ["npm:1.3.0", {\
+          "packageLocation": "./.yarn/cache/@tauri-apps-cli-npm-1.3.0-7170f55a01-7ab24fa306.zip/node_modules/@tauri-apps/cli/",\
           "packageDependencies": [\
-            ["@tauri-apps/cli", "npm:1.2.3"],\
-            ["@tauri-apps/cli-darwin-arm64", "npm:1.2.3"],\
-            ["@tauri-apps/cli-darwin-x64", "npm:1.2.3"],\
-            ["@tauri-apps/cli-linux-arm-gnueabihf", "npm:1.2.3"],\
-            ["@tauri-apps/cli-linux-arm64-gnu", "npm:1.2.3"],\
-            ["@tauri-apps/cli-linux-arm64-musl", "npm:1.2.3"],\
-            ["@tauri-apps/cli-linux-x64-gnu", "npm:1.2.3"],\
-            ["@tauri-apps/cli-linux-x64-musl", "npm:1.2.3"],\
-            ["@tauri-apps/cli-win32-ia32-msvc", "npm:1.2.3"],\
-            ["@tauri-apps/cli-win32-x64-msvc", "npm:1.2.3"]\
+            ["@tauri-apps/cli", "npm:1.3.0"],\
+            ["@tauri-apps/cli-darwin-arm64", "npm:1.3.0"],\
+            ["@tauri-apps/cli-darwin-x64", "npm:1.3.0"],\
+            ["@tauri-apps/cli-linux-arm-gnueabihf", "npm:1.3.0"],\
+            ["@tauri-apps/cli-linux-arm64-gnu", "npm:1.3.0"],\
+            ["@tauri-apps/cli-linux-arm64-musl", "npm:1.3.0"],\
+            ["@tauri-apps/cli-linux-x64-gnu", "npm:1.3.0"],\
+            ["@tauri-apps/cli-linux-x64-musl", "npm:1.3.0"],\
+            ["@tauri-apps/cli-win32-ia32-msvc", "npm:1.3.0"],\
+            ["@tauri-apps/cli-win32-x64-msvc", "npm:1.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@tauri-apps/cli-darwin-arm64", [\
-        ["npm:1.2.3", {\
-          "packageLocation": "./.yarn/unplugged/@tauri-apps-cli-darwin-arm64-npm-1.2.3-afdc7a829e/node_modules/@tauri-apps/cli-darwin-arm64/",\
+        ["npm:1.3.0", {\
+          "packageLocation": "./.yarn/unplugged/@tauri-apps-cli-darwin-arm64-npm-1.3.0-253f8b06f6/node_modules/@tauri-apps/cli-darwin-arm64/",\
           "packageDependencies": [\
-            ["@tauri-apps/cli-darwin-arm64", "npm:1.2.3"]\
+            ["@tauri-apps/cli-darwin-arm64", "npm:1.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@tauri-apps/cli-darwin-x64", [\
-        ["npm:1.2.3", {\
-          "packageLocation": "./.yarn/unplugged/@tauri-apps-cli-darwin-x64-npm-1.2.3-a2bb313ee8/node_modules/@tauri-apps/cli-darwin-x64/",\
+        ["npm:1.3.0", {\
+          "packageLocation": "./.yarn/unplugged/@tauri-apps-cli-darwin-x64-npm-1.3.0-1b366eb981/node_modules/@tauri-apps/cli-darwin-x64/",\
           "packageDependencies": [\
-            ["@tauri-apps/cli-darwin-x64", "npm:1.2.3"]\
+            ["@tauri-apps/cli-darwin-x64", "npm:1.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@tauri-apps/cli-linux-arm-gnueabihf", [\
-        ["npm:1.2.3", {\
-          "packageLocation": "./.yarn/unplugged/@tauri-apps-cli-linux-arm-gnueabihf-npm-1.2.3-413e72dd08/node_modules/@tauri-apps/cli-linux-arm-gnueabihf/",\
+        ["npm:1.3.0", {\
+          "packageLocation": "./.yarn/unplugged/@tauri-apps-cli-linux-arm-gnueabihf-npm-1.3.0-6e977afe42/node_modules/@tauri-apps/cli-linux-arm-gnueabihf/",\
           "packageDependencies": [\
-            ["@tauri-apps/cli-linux-arm-gnueabihf", "npm:1.2.3"]\
+            ["@tauri-apps/cli-linux-arm-gnueabihf", "npm:1.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@tauri-apps/cli-linux-arm64-gnu", [\
-        ["npm:1.2.3", {\
-          "packageLocation": "./.yarn/unplugged/@tauri-apps-cli-linux-arm64-gnu-npm-1.2.3-d139d39bf8/node_modules/@tauri-apps/cli-linux-arm64-gnu/",\
+        ["npm:1.3.0", {\
+          "packageLocation": "./.yarn/unplugged/@tauri-apps-cli-linux-arm64-gnu-npm-1.3.0-83f815cccd/node_modules/@tauri-apps/cli-linux-arm64-gnu/",\
           "packageDependencies": [\
-            ["@tauri-apps/cli-linux-arm64-gnu", "npm:1.2.3"]\
+            ["@tauri-apps/cli-linux-arm64-gnu", "npm:1.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@tauri-apps/cli-linux-arm64-musl", [\
-        ["npm:1.2.3", {\
-          "packageLocation": "./.yarn/unplugged/@tauri-apps-cli-linux-arm64-musl-npm-1.2.3-99e6af5c8c/node_modules/@tauri-apps/cli-linux-arm64-musl/",\
+        ["npm:1.3.0", {\
+          "packageLocation": "./.yarn/unplugged/@tauri-apps-cli-linux-arm64-musl-npm-1.3.0-4f5b96db78/node_modules/@tauri-apps/cli-linux-arm64-musl/",\
           "packageDependencies": [\
-            ["@tauri-apps/cli-linux-arm64-musl", "npm:1.2.3"]\
+            ["@tauri-apps/cli-linux-arm64-musl", "npm:1.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@tauri-apps/cli-linux-x64-gnu", [\
-        ["npm:1.2.3", {\
-          "packageLocation": "./.yarn/unplugged/@tauri-apps-cli-linux-x64-gnu-npm-1.2.3-075bdb4c71/node_modules/@tauri-apps/cli-linux-x64-gnu/",\
+        ["npm:1.3.0", {\
+          "packageLocation": "./.yarn/unplugged/@tauri-apps-cli-linux-x64-gnu-npm-1.3.0-2102ea76fb/node_modules/@tauri-apps/cli-linux-x64-gnu/",\
           "packageDependencies": [\
-            ["@tauri-apps/cli-linux-x64-gnu", "npm:1.2.3"]\
+            ["@tauri-apps/cli-linux-x64-gnu", "npm:1.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@tauri-apps/cli-linux-x64-musl", [\
-        ["npm:1.2.3", {\
-          "packageLocation": "./.yarn/unplugged/@tauri-apps-cli-linux-x64-musl-npm-1.2.3-13496ad542/node_modules/@tauri-apps/cli-linux-x64-musl/",\
+        ["npm:1.3.0", {\
+          "packageLocation": "./.yarn/unplugged/@tauri-apps-cli-linux-x64-musl-npm-1.3.0-aede71caab/node_modules/@tauri-apps/cli-linux-x64-musl/",\
           "packageDependencies": [\
-            ["@tauri-apps/cli-linux-x64-musl", "npm:1.2.3"]\
+            ["@tauri-apps/cli-linux-x64-musl", "npm:1.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@tauri-apps/cli-win32-ia32-msvc", [\
-        ["npm:1.2.3", {\
-          "packageLocation": "./.yarn/unplugged/@tauri-apps-cli-win32-ia32-msvc-npm-1.2.3-e9ad9f06be/node_modules/@tauri-apps/cli-win32-ia32-msvc/",\
+        ["npm:1.3.0", {\
+          "packageLocation": "./.yarn/unplugged/@tauri-apps-cli-win32-ia32-msvc-npm-1.3.0-d9995d5863/node_modules/@tauri-apps/cli-win32-ia32-msvc/",\
           "packageDependencies": [\
-            ["@tauri-apps/cli-win32-ia32-msvc", "npm:1.2.3"]\
+            ["@tauri-apps/cli-win32-ia32-msvc", "npm:1.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@tauri-apps/cli-win32-x64-msvc", [\
-        ["npm:1.2.3", {\
-          "packageLocation": "./.yarn/unplugged/@tauri-apps-cli-win32-x64-msvc-npm-1.2.3-0c158166c7/node_modules/@tauri-apps/cli-win32-x64-msvc/",\
+        ["npm:1.3.0", {\
+          "packageLocation": "./.yarn/unplugged/@tauri-apps-cli-win32-x64-msvc-npm-1.3.0-e66a196770/node_modules/@tauri-apps/cli-win32-x64-msvc/",\
           "packageDependencies": [\
-            ["@tauri-apps/cli-win32-x64-msvc", "npm:1.2.3"]\
+            ["@tauri-apps/cli-win32-x64-msvc", "npm:1.3.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1627,8 +1627,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/plugin-transform-react-jsx-development", "virtual:d1efcf44525081a1906d5d2dfbc1ee952a3fad243308350d0db8af70f13510226a56faa08322bac3a1c13bc312bf0074870dbc0d851219cb60e7bf515bc68c63#npm:7.18.6"],\
             ["@preact/preset-vite", "virtual:d1efcf44525081a1906d5d2dfbc1ee952a3fad243308350d0db8af70f13510226a56faa08322bac3a1c13bc312bf0074870dbc0d851219cb60e7bf515bc68c63#npm:2.5.0"],\
             ["@reduxjs/toolkit", "virtual:d1efcf44525081a1906d5d2dfbc1ee952a3fad243308350d0db8af70f13510226a56faa08322bac3a1c13bc312bf0074870dbc0d851219cb60e7bf515bc68c63#npm:1.9.5"],\
-            ["@tauri-apps/api", "npm:1.2.0"],\
-            ["@tauri-apps/cli", "npm:1.2.3"],\
+            ["@tauri-apps/api", "npm:1.3.0"],\
+            ["@tauri-apps/cli", "npm:1.3.0"],\
             ["antd", "virtual:d1efcf44525081a1906d5d2dfbc1ee952a3fad243308350d0db8af70f13510226a56faa08322bac3a1c13bc312bf0074870dbc0d851219cb60e7bf515bc68c63#npm:5.4.6"],\
             ["babel-plugin-transform-hook-names", "virtual:d1efcf44525081a1906d5d2dfbc1ee952a3fad243308350d0db8af70f13510226a56faa08322bac3a1c13bc312bf0074870dbc0d851219cb60e7bf515bc68c63#npm:1.0.2"],\
             ["onecolor", "npm:4.0.0"],\
