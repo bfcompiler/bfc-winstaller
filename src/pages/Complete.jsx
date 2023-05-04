@@ -15,7 +15,13 @@ import { HIGHLIGHT_COLOR, BACKGROUND_COLOR } from '../ColorScheme';
 import BFHeader from '../Components/BFHeader';
 
 export default function CompletePage() {
-	const adpath = useSelector(state => state.appdata.path);
+	const [adpath, setAdpath] = React.useState("");
+
+	React.useEffect(() => {
+		tf.generate_appdata().then(payload => {
+			setAdpath(payload);
+		});
+	}, []);
 
 	return <div onContextMenu={e => e.preventDefault()}>
 		<Space direction='vertical' style={{ width: "100%", position: "absolute", top: "0px", left: "0px", overflow: "hidden" }} size={"small"}>

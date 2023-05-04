@@ -20,7 +20,7 @@ import BFHeader from '../Components/BFHeader';
 
 export default function MSYS2DownloaderPage() {
 	const nav = useNavigate();
-	const adpath = useSelector(state => state.appdata.path);
+	const [adpath, setAdpath] = React.useState("");
 	const dispatch = useDispatch();
 
 	const [step, setStep] = React.useState(0);
@@ -111,8 +111,10 @@ export default function MSYS2DownloaderPage() {
 	}, [selectedUrl, rawUrlContents, msys2XZURL, adpath]);
 
 	React.useEffect(() => {
-		tf.generate_appdata();
-		tf.get_url_contents(CONSTANTS['MSYS2_DATA_URL']);
+		tf.generate_appdata().then(appdata => {
+			setAdpath(appdata);
+			tf.get_url_contents(CONSTANTS['MSYS2_DATA_URL']);
+		});
 	}, []);
 
 	return <div onContextMenu={e => e.preventDefault()}>

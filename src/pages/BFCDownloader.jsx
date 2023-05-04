@@ -20,7 +20,7 @@ import GithubIcon from '../Components/GithubIcon';
 
 export default function BFCDownloader() {
 	const nav = useNavigate();
-	const adpath = useSelector(state => state.appdata.path);
+	const [adpath, setAdpath] = React.useState("");
 	const [step, setStep] = React.useState(0);
 	const [stepMessage, setStepMessage] = React.useState("Querying bfc-win Releases");
 
@@ -96,7 +96,10 @@ export default function BFCDownloader() {
 	}, [rawUrlContents, selectedUrl, bfcURL]);
 
 	React.useEffect(() => {
-		tf.get_url_contents(CONSTANTS['BFC_DATA_URL']);
+		tf.generate_appdata().then(payload => {
+			setAdpath(payload);
+			tf.get_url_contents(CONSTANTS['BFC_DATA_URL']);
+		});
 	}, []);
 
 	return <div onContextMenu={e => e.preventDefault()}>

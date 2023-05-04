@@ -6,7 +6,6 @@
 import { tauri, event } from '@tauri-apps/api';
 
 import store from './Store';
-import { setAppdataPath } from './slices/AppdataSlice';
 import { setContents } from './slices/UrlContents';
 import { setComplete as downloadSetComplete } from './slices/DownloadedFile';
 import { setComplete as extractSetComplete } from './slices/ExtractXZTar'
@@ -21,12 +20,11 @@ export function open_link_in_default_browser(url) {
 }
 
 export function generate_appdata() {
-	let unlisten;
-	event.listen("generate_appdata", event => {
-		store.dispatch(setAppdataPath(event.payload));
-		unlisten();
-	}).then(e => unlisten = e);
-	tauri.invoke("generate_appdata");
+	return new Promise((res, rej) => {
+		tauri.invoke("generate_appdata").then(payload => {
+			res(payload);
+		});
+	});
 }
 
 export function get_url_contents(url) {

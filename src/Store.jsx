@@ -5,7 +5,6 @@
 
 import { configureStore } from '@reduxjs/toolkit';
 
-import AppdataReducer from './slices/AppdataSlice';
 import UrlContentsReducer from './slices/UrlContents';
 import DownloadedFileReducer from './slices/DownloadedFile';
 import ExtractXZTarReducer from './slices/ExtractXZTar';
@@ -17,7 +16,6 @@ import SetupBfcReducer from './slices/SetupBfc';
 
 export default configureStore({
 	reducer: {
-		appdata: AppdataReducer,
 		urlContents: UrlContentsReducer,
 		downloadedFile: DownloadedFileReducer,
 		extractXZTar: ExtractXZTarReducer,
