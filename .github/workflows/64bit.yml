@@ -34,12 +34,20 @@ jobs:
         run: corepack enable && corepack prepare yarn@3.5.1 --activate
       - name: Install Rust
         run: rustup install nightly && rustup default nightly
+      - name: Install Tauri CLI with Cargo
+        run: cargo install tauri-cli
       - name: Install dependencies with Yarn
         run: yarn install
       - name: Compile Tauri
-        uses: tauri-apps/tauri-action@v0
+        run: cargo tauri build --target x86_64-pc-windows-msvc -- -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort
+      - name: Compress artifact with UPX
+        uses: crazy-max/ghaction-upx@v2
+        with:
+          version: latest
+          files: src-tauri/target/x86_64-pc-windows-msvc/release/bfc-winstaller.exe
+          args: -f9
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: bfc-winstaller
-          path: src-tauri/target/release/bfc-winstaller.exe
+          path: src-tauri/target/x86_64-pc-windows-msvc/release/bfc-winstaller.exe
